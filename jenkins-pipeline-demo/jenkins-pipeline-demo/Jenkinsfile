@@ -11,19 +11,25 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                dir('jenkins-pipeline-demo/jenkins-pipeline-demo') {
+                    sh 'mvn clean compile'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                dir('jenkins-pipeline-demo/jenkins-pipeline-demo') {
+                    sh 'mvn test'
+                }
             }
         }
 
         stage('Package') {
             steps {
-                sh 'mvn package'
+                dir('jenkins-pipeline-demo/jenkins-pipeline-demo') {
+                    sh 'mvn package'
+                }
             }
         }
     }
