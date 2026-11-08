@@ -33,43 +33,6 @@ pipeline {
             }
         }
     }
-}
-
-pipeline {
-    agent any
-
-    stages {
-
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Build') {
-            steps {
-                dir('jenkins-pipeline-demo/jenkins-pipeline-demo') {
-                    sh 'mvn clean compile'
-                }
-            }
-        }
-
-        stage('Test') {
-            steps {
-                dir('jenkins-pipeline-demo/jenkins-pipeline-demo') {
-                    sh 'mvn test'
-                }
-            }
-        }
-
-        stage('Package') {
-            steps {
-                dir('jenkins-pipeline-demo/jenkins-pipeline-demo') {
-                    sh 'mvn package'
-                }
-            }
-        }
-    }
 
     post {
         success {
@@ -89,3 +52,4 @@ pipeline {
         }
     }
 }
+
